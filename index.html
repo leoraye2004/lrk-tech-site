@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LRK.TECH — Sites e Sistemas sob medida</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-950:#050a17;
+    --navy-900:#0a1128;
+    --navy-800:#0f1b3d;
+    --navy-700:#152552;
+    --blue-500:#1266f1;
+    --blue-400:#3d84ff;
+    --blue-300:#6fa3ff;
+    --ice-100:#eef3ff;
+    --ice-300:#c3d3f5;
+    --slate-400:#8593b8;
+    --white:#ffffff;
+    --radius-lg:20px;
+    --radius-md:12px;
+    --maxw:1160px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--navy-950);
+    color:var(--ice-100);
+    font-family:'Inter', sans-serif;
+    line-height:1.55;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+      radial-gradient(circle at 15% 8%, rgba(18,102,241,0.20), transparent 45%),
+      radial-gradient(circle at 85% 25%, rgba(61,132,255,0.14), transparent 40%);
+    pointer-events:none;
+    z-index:0;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px; position:relative; z-index:1;}
+  h1,h2,h3{font-family:'Space Grotesk', sans-serif; letter-spacing:-0.02em;}
+  .mono{font-family:'JetBrains Mono', monospace;}
+  a{color:inherit; text-decoration:none;}
+  ::selection{background:var(--blue-500); color:#fff;}
+
+  /* NAV */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(5,10,23,0.75);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(111,163,255,0.12);
+  }
+  nav{
+    max-width:var(--maxw); margin:0 auto; padding:16px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{display:flex; align-items:center; gap:10px; font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:1.15rem;}
+  .brand img{width:36px; height:36px; display:block; object-fit:contain;}
+  .nav-links{display:flex; gap:32px; font-size:0.92rem; color:var(--ice-300);}
+  .nav-links a{transition:color .2s;}
+  .nav-links a:hover{color:var(--white);}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:11px 22px; border-radius:100px;
+    font-weight:600; font-size:0.9rem;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg, var(--blue-400), var(--blue-500));
+    color:#fff;
+    box-shadow:0 8px 24px rgba(18,102,241,0.35);
+  }
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 12px 30px rgba(18,102,241,0.5);}
+  .btn-ghost{
+    border:1px solid rgba(195,211,245,0.25);
+    color:var(--ice-100);
+  }
+  .btn-ghost:hover{border-color:var(--blue-300); background:rgba(61,132,255,0.08);}
+  .nav-cta{display:none;}
+  @media(min-width:860px){ .nav-cta{display:inline-flex;} }
+  @media(max-width:859px){ .nav-links{display:none;} }
+
+  /* HERO */
+  .hero{padding:88px 0 64px;}
+  .hero-grid{display:grid; grid-template-columns:1fr; gap:52px; align-items:center; max-width:640px; margin:0 auto; text-align:center;}
+  .hero-grid .eyebrow{justify-content:center;}
+  .hero-grid p.lead{margin-left:auto; margin-right:auto;}
+  .hero-actions{justify-content:center;}
+  .trust-row{justify-content:center;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:0.78rem; color:var(--blue-300);
+    letter-spacing:0.08em; text-transform:uppercase;
+    margin-bottom:22px;
+  }
+  .eyebrow .dot{width:6px; height:6px; border-radius:50%; background:var(--blue-400); box-shadow:0 0 12px var(--blue-400); animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;} 50%{opacity:.35;}}
+  h1{font-size:clamp(2.1rem, 4.6vw, 3.4rem); font-weight:700; line-height:1.1; color:var(--white); margin-bottom:22px;}
+  h1 span{color:var(--blue-300);}
+  .hero p.lead{font-size:1.08rem; color:var(--ice-300); max-width:480px; margin-bottom:34px;}
+  .hero-actions{display:flex; flex-wrap:wrap; gap:14px; margin-bottom:40px;}
+  .trust-row{display:flex; flex-wrap:wrap; gap:26px; font-size:0.84rem; color:var(--slate-400);}
+  .trust-row span{display:flex; align-items:center; gap:7px;}
+  .trust-row svg{width:14px; height:14px; color:var(--blue-400);}
+
+  /* SECTIONS shared */
+  section{padding:80px 0; position:relative; z-index:1;}
+  .section-head{max-width:620px; margin-bottom:52px;}
+  .section-head .eyebrow{margin-bottom:14px;}
+  .section-head h2{font-size:clamp(1.7rem, 3.2vw, 2.4rem); color:var(--white); margin-bottom:14px;}
+  .section-head p{color:var(--ice-300); font-size:1rem;}
+
+  /* SEGMENTS */
+  .segments{padding:64px 0;}
+  .segment-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:14px;}
+  @media(min-width:640px){ .segment-grid{grid-template-columns:repeat(3, 1fr);} }
+  @media(min-width:900px){ .segment-grid{grid-template-columns:repeat(4, 1fr);} }
+  .segment-chip{
+    display:flex; align-items:center; gap:12px;
+    background:var(--navy-800);
+    border:1px solid rgba(111,163,255,0.14);
+    border-radius:var(--radius-md);
+    padding:18px 16px;
+    transition:border-color .2s, transform .2s, background .2s;
+  }
+  .segment-chip:hover{border-color:var(--blue-400); transform:translateY(-3px); background:var(--navy-700);}
+  .segment-chip .icon{
+    width:38px; height:38px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:10px;
+    background:rgba(18,102,241,0.14);
+    color:var(--blue-300);
+  }
+  .segment-chip .icon svg{width:19px; height:19px;}
+  .segment-chip span{color:var(--ice-100); font-size:0.92rem; font-weight:500;}
+
+  /* SERVICES */
+  .services{background:var(--navy-900); border-top:1px solid rgba(111,163,255,0.1); border-bottom:1px solid rgba(111,163,255,0.1);}
+  .cards3{display:grid; grid-template-columns:1fr; gap:20px;}
+  @media(min-width:760px){ .cards3{grid-template-columns:repeat(3, 1fr);} }
+  .service-card{
+    background:var(--navy-800);
+    border:1px solid rgba(111,163,255,0.14);
+    border-radius:var(--radius-md);
+    padding:28px 24px;
+    transition:border-color .2s, transform .2s;
+  }
+  .service-card:hover{border-color:var(--blue-400); transform:translateY(-4px);}
+  .service-card .num{font-family:'JetBrains Mono', monospace; color:var(--blue-400); font-size:0.8rem; margin-bottom:16px; display:block;}
+  .service-card h3{color:var(--white); font-size:1.15rem; margin-bottom:10px;}
+  .service-card p{color:var(--slate-400); font-size:0.92rem;}
+
+  /* PORTFOLIO CAROUSEL */
+  .carousel-wrap{position:relative;}
+  .carousel-track{
+    display:flex; gap:24px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    scroll-behavior:smooth;
+    padding-bottom:8px;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .carousel-track::-webkit-scrollbar{display:none;}
+  .project-card{
+    flex:0 0 auto;
+    scroll-snap-align:start;
+    width:min(680px, 86vw);
+    background:linear-gradient(160deg, var(--navy-800), var(--navy-900));
+    border:1px solid rgba(111,163,255,0.14);
+    border-radius:var(--radius-lg);
+    overflow:hidden;
+    transition:border-color .25s;
+  }
+  .project-card:hover{border-color:rgba(111,163,255,0.4);}
+  .project-shot{
+    position:relative;
+    aspect-ratio:16/9.4;
+    background:var(--navy-950);
+    overflow:hidden;
+    border-bottom:1px solid rgba(111,163,255,0.14);
+  }
+  .project-shot img{width:100%; height:100%; object-fit:contain; object-position:center; display:block;}
+  .project-shot .tag{position:absolute; top:14px; left:14px;}
+  .project-body{padding:24px 26px 28px;}
+  .tag{
+    font-family:'JetBrains Mono', monospace; font-size:0.72rem; letter-spacing:0.06em;
+    padding:6px 12px; border-radius:100px; width:fit-content; height:fit-content;
+    text-transform:uppercase;
+    backdrop-filter:blur(6px);
+  }
+  .tag-site{background:rgba(18,102,241,0.28); color:#dbe8ff; border:1px solid rgba(18,102,241,0.5);}
+  .tag-sistema{background:rgba(74,222,128,0.18); color:#c3f5d6; border:1px solid rgba(74,222,128,0.4);}
+  .project-info h3{color:var(--white); font-size:1.15rem; margin-bottom:8px;}
+  .project-info p{color:var(--slate-400); font-size:0.9rem;}
+
+  /* Carousel controls */
+  .carousel-controls{
+    display:flex; align-items:center; justify-content:space-between;
+    margin-top:24px;
+  }
+  .carousel-dots{display:flex; gap:8px;}
+  .carousel-dots .dot-btn{
+    width:8px; height:8px; border-radius:50%;
+    background:rgba(195,211,245,0.25);
+    border:none; padding:0; cursor:pointer;
+    transition:background .2s, transform .2s;
+  }
+  .carousel-dots .dot-btn.active{background:var(--blue-400); transform:scale(1.3);}
+  .carousel-arrows{display:flex; gap:10px;}
+  .arrow-btn{
+    width:44px; height:44px; border-radius:50%;
+    border:1px solid rgba(111,163,255,0.25);
+    background:rgba(255,255,255,0.03);
+    color:var(--ice-100);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    transition:background .2s, border-color .2s, transform .15s;
+  }
+  .arrow-btn:hover{background:rgba(61,132,255,0.14); border-color:var(--blue-400);}
+  .arrow-btn:active{transform:scale(0.94);}
+  .arrow-btn:disabled{opacity:0.3; cursor:default;}
+  .arrow-btn:disabled:hover{background:rgba(255,255,255,0.03); border-color:rgba(111,163,255,0.25);}
+  .arrow-btn svg{width:18px; height:18px;}
+
+  /* PROCESS */
+  .process{background:var(--navy-900); border-top:1px solid rgba(111,163,255,0.1); border-bottom:1px solid rgba(111,163,255,0.1);}
+  .steps{display:grid; grid-template-columns:1fr; gap:0;}
+  @media(min-width:760px){ .steps{grid-template-columns:repeat(3,1fr);} }
+  .step{padding:28px 24px; position:relative;}
+  @media(min-width:760px){
+    .step:not(:last-child)::after{
+      content:""; position:absolute; top:34px; right:-1px; bottom:auto;
+      width:1px; height:60%; background:rgba(111,163,255,0.15);
+    }
+  }
+  .step .snum{
+    font-family:'JetBrains Mono', monospace; color:var(--blue-400);
+    font-size:0.85rem; margin-bottom:14px; display:block;
+  }
+  .step h3{color:var(--white); font-size:1.05rem; margin-bottom:8px;}
+  .step p{color:var(--slate-400); font-size:0.9rem;}
+
+  /* CTA FINAL */
+  .cta-final{text-align:center; padding:100px 0;}
+  .cta-final h2{font-size:clamp(1.8rem, 4vw, 2.6rem); color:var(--white); margin-bottom:16px;}
+  .cta-final p{color:var(--ice-300); margin-bottom:34px; font-size:1.05rem;}
+  .cta-final .btn{padding:16px 34px; font-size:1rem;}
+
+  /* QUOTE FORM */
+  .quote-form{
+    max-width:520px; margin:0 auto; text-align:left;
+    background:var(--navy-800);
+    border:1px solid rgba(111,163,255,0.16);
+    border-radius:var(--radius-lg);
+    padding:32px;
+  }
+  .form-row{margin-bottom:18px;}
+  .form-row label{
+    display:block; font-size:0.82rem; color:var(--ice-300);
+    margin-bottom:8px; font-weight:500;
+  }
+  .form-row input,
+  .form-row select,
+  .form-row textarea{
+    width:100%;
+    background:var(--navy-900);
+    border:1px solid rgba(111,163,255,0.2);
+    border-radius:10px;
+    padding:12px 14px;
+    color:var(--ice-100);
+    font-family:'Inter', sans-serif;
+    font-size:0.92rem;
+    transition:border-color .2s;
+  }
+  .form-row input:focus,
+  .form-row select:focus,
+  .form-row textarea:focus{
+    outline:none; border-color:var(--blue-400);
+  }
+  .form-row textarea{resize:vertical; min-height:90px;}
+  .form-row select{
+    appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238593b8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position:right 14px center;
+    background-size:16px;
+    padding-right:38px;
+  }
+  .quote-form .btn{width:100%; justify-content:center; padding:14px; font-size:0.95rem;}
+  .form-status{
+    margin-top:14px; font-size:0.86rem; text-align:center;
+    display:none;
+  }
+  .form-status.show{display:block;}
+  .form-status.ok{color:#4ade80;}
+  .form-status.warn{color:var(--blue-300);}
+  .form-note{font-size:0.78rem; color:var(--slate-400); text-align:center; margin-top:14px;}
+
+  footer{
+    border-top:1px solid rgba(111,163,255,0.12);
+    padding:36px 0;
+  }
+  .footer-row{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:16px;}
+  .footer-brand{display:flex; align-items:center; gap:10px; font-family:'Space Grotesk', sans-serif; font-weight:700;}
+  .footer-brand img{width:28px; height:28px; object-fit:contain;}
+  .footer-links{display:flex; gap:22px; font-size:0.86rem; color:var(--slate-400);}
+  .footer-links a:hover{color:var(--blue-300);}
+  .copyright{font-size:0.8rem; color:var(--slate-400); font-family:'JetBrains Mono', monospace;}
+
+  /* WHATSAPP FLOAT */
+  .wa-float{
+    position:fixed; z-index:60;
+    bottom:22px; right:22px;
+    width:58px; height:58px;
+    background:#25D366;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 8px 24px rgba(0,0,0,0.35);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .wa-float:hover{transform:translateY(-3px) scale(1.05); box-shadow:0 12px 30px rgba(0,0,0,0.45);}
+  .wa-float svg{width:30px; height:30px;}
+
+  @media(prefers-reduced-motion: reduce){
+    .eyebrow .dot{animation:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="brand">
+      <img src="logo.png" alt="LRK.TECH">
+    </div>
+    <div class="nav-links">
+      <a href="#servicos">Serviços</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#processo">Como funciona</a>
+    </div>
+    <a class="btn btn-primary nav-cta" href="#orcamento">Solicitar orçamento</a>
+  </nav>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> Desenvolvimento web &amp; sistemas sob medida</div>
+        <h1>Seu site não é cartão de visita.<br>É seu <span>melhor vendedor</span>.</h1>
+        <p class="lead">Criamos sites, landing pages e sistemas que trabalham pelo seu negócio 24h por dia — pensados pra converter visitante em cliente, não só existir.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#orcamento">
+            Solicitar orçamento
+          </a>
+          <a class="btn btn-ghost" href="#projetos">Ver projetos</a>
+        </div>
+        <div class="trust-row">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Sites, landing pages e sistemas</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Atendimento pra todo o Brasil</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> 100% remoto</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEGMENTS -->
+  <section class="segments" id="segmentos">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Pra quem atendemos</div>
+        <h2>Ramos que já atendemos.</h2>
+        <p>Sites e sistemas pensados pra realidade de cada tipo de negócio — encontre o seu.</p>
+      </div>
+      <div class="segment-grid">
+        <div class="segment-chip">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21V9l8-6 8 6v12M9 21v-6h6v6"/></svg></span>
+          <span>Restaurantes</span>
+        </div>
+        <div class="segment-chip">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l1-5h16l1 5M4 9v11h16V9M4 9a2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0"/></svg></span>
+          <span>Comércios e varejo</span>
+        </div>
+        <div class="segment-chip">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6M9 11h.01M15 11h.01M9 7h.01M15 7h.01"/></svg></span>
+          <span>Imobiliárias</span>
+        </div>
+        <div class="segment-chip">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 21h20M4 21V11l5-4v14M9 21v-4h4v4M13 21V7l7 4v10"/></svg></span>
+          <span>Indústrias</span>
+        </div>
+        <div class="segment-chip">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.35-9.5-8.5C.86 9.24 2.5 6 6 6c2 0 3.5 1.2 4 2.3C10.5 7.2 12 6 14 6c3.5 0 5.14 3.24 3.5 6.5C19 16.65 12 21 12 21z"/></svg></span>
+          <span>Saúde e bem-estar</span>
+        </div>
+        <div class="segment-chip">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <span>Prestadores de serviço</span>
+        </div>
+        <div class="segment-chip">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10L12 5 2 10l10 5 10-5zM6 12.5V17c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/></svg></span>
+          <span>Educação</span>
+        </div>
+        <div class="segment-chip">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg></span>
+          <span>Outros nichos, sob consulta</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="servicos">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">O que fazemos</div>
+        <h2>Da ideia ao ar, sem enrolação.</h2>
+        <p>Cada projeto é construído sob medida — sem template genérico, sem funcionalidade que você não vai usar.</p>
+      </div>
+      <div class="cards3">
+        <div class="service-card">
+          <span class="num">01</span>
+          <h3>Sites institucionais</h3>
+          <p>Presença digital que passa credibilidade e transforma visita em contato — rápido, responsivo e feito pra converter.</p>
+        </div>
+        <div class="service-card">
+          <span class="num">02</span>
+          <h3>Landing pages</h3>
+          <p>Páginas de alta conversão focadas em uma única ação: captar o lead ou fechar a venda.</p>
+        </div>
+        <div class="service-card">
+          <span class="num">03</span>
+          <h3>Sistemas sob medida</h3>
+          <p>Automação, agendamento, painéis de gestão — construídos pra resolver o processo real do seu negócio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="projetos">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Portfólio</div>
+        <h2>Projetos que já colocamos no ar.</h2>
+        <p>Uma amostra do que construímos — de sites institucionais a sistemas complexos com automação e inteligência artificial. Arraste ou use as setas pra navegar.</p>
+      </div>
+
+      <div class="carousel-wrap">
+        <div class="carousel-track" id="carousel">
+
+          <div class="project-card">
+            <div class="project-shot">
+              <span class="tag tag-site">Site</span>
+              <img src="projects/lwclean-site.jpg" alt="Site institucional da LW Clean">
+            </div>
+            <div class="project-body">
+              <div class="project-info">
+                <h3>LW Clean — Site institucional</h3>
+                <p>Site para empresa de limpeza residencial e comercial em Boston (EUA), com agendamento online, confirmação automática via WhatsApp e demonstração ao vivo do sistema de reservas.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-shot">
+              <span class="tag tag-sistema">Sistema</span>
+              <img src="projects/lwclean-sistema.jpg" alt="Painel de gestão da LW Clean">
+            </div>
+            <div class="project-body">
+              <div class="project-info">
+                <h3>LW Clean — Painel de gestão</h3>
+                <p>Painel multi-tenant para empresas de limpeza — calendário de agendamentos em tempo real, controle de equipe e clientes, e confirmação automática via WhatsApp.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-shot">
+              <span class="tag tag-site">Site</span>
+              <img src="projects/precisao-torno.jpg" alt="Site da Precisão Tornearia Mecânica">
+            </div>
+            <div class="project-body">
+              <div class="project-info">
+                <h3>Precisão Tornearia Mecânica</h3>
+                <p>Site para tornearia mecânica em Venâncio Aires/RS — usinagem sob medida, manutenção de motorredutores, compressores e bombas, com identidade visual técnica e orçamento direto pelo WhatsApp.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-shot">
+              <span class="tag tag-site">Site</span>
+              <img src="projects/5m-terraplanagem.jpg" alt="Site da 5M Terraplanagem">
+            </div>
+            <div class="project-body">
+              <div class="project-info">
+                <h3>5M Terraplanagem</h3>
+                <p>Site para empresa de terraplanagem em Balneário Camboriú/SC — demolição, limpeza, escavação e nivelamento de terreno, com orçamento direto pelo WhatsApp.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-shot">
+              <span class="tag tag-site">Site</span>
+              <img src="projects/nadia-regina.jpg" alt="Site de Nádia Regina">
+            </div>
+            <div class="project-body">
+              <div class="project-info">
+                <h3>Nádia Regina — Massoterapia</h3>
+                <p>Site para profissional de massoterapia e bem-estar, com identidade visual leve e acolhedora e agendamento de sessão direto pela página.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="carousel-controls">
+          <div class="carousel-dots" id="carousel-dots"></div>
+          <div class="carousel-arrows">
+            <button class="arrow-btn" id="carousel-prev" aria-label="Projeto anterior">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="arrow-btn" id="carousel-next" aria-label="Próximo projeto">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="processo">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Como funciona</div>
+        <h2>Três etapas até o seu projeto no ar.</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="snum">01</span>
+          <h3>Briefing</h3>
+          <p>Entendemos seu negócio, seu público e o que o site ou sistema precisa resolver de verdade.</p>
+        </div>
+        <div class="step">
+          <span class="snum">02</span>
+          <h3>Desenvolvimento</h3>
+          <p>Construímos sob medida, com atualizações no processo — sem caixa-preta.</p>
+        </div>
+        <div class="step">
+          <span class="snum">03</span>
+          <h3>Entrega &amp; suporte</h3>
+          <p>Projeto no ar, com suporte pra ajustes e evolução conforme seu negócio cresce.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="cta-final" id="orcamento">
+    <div class="wrap">
+      <div class="eyebrow" style="justify-content:center;">Vamos começar</div>
+      <h2>Vamos criar o próximo projeto?</h2>
+      <p>Conta o que seu negócio precisa — a gente analisa e retorna o quanto antes.</p>
+
+      <form class="quote-form" id="quote-form">
+        <div class="form-row">
+          <label for="q-nome">Nome</label>
+          <input type="text" id="q-nome" name="nome" placeholder="Seu nome" required>
+        </div>
+        <div class="form-row">
+          <label for="q-negocio">Negócio / ramo</label>
+          <select id="q-negocio" name="negocio" required>
+            <option value="" disabled selected>Selecione uma opção</option>
+            <option value="Restaurantes">Restaurantes</option>
+            <option value="Comércios e varejo">Comércios e varejo</option>
+            <option value="Imobiliárias">Imobiliárias</option>
+            <option value="Indústrias">Indústrias</option>
+            <option value="Saúde e bem-estar">Saúde e bem-estar</option>
+            <option value="Prestadores de serviço">Prestadores de serviço</option>
+            <option value="Educação">Educação</option>
+            <option value="Outro">Outro</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="q-empresa">Empresa</label>
+          <input type="text" id="q-empresa" name="empresa" placeholder="Nome da sua empresa">
+        </div>
+        <div class="form-row">
+          <label for="q-tipo">O que você precisa</label>
+          <select id="q-tipo" name="tipo" required>
+            <option value="" disabled selected>Selecione uma opção</option>
+            <option value="Site institucional">Site institucional</option>
+            <option value="Landing page">Landing page</option>
+            <option value="Sistema sob medida">Sistema sob medida</option>
+            <option value="Ainda não sei / quero orientação">Ainda não sei / quero orientação</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="q-msg">Conte o que gostaria</label>
+          <textarea id="q-msg" name="mensagem" placeholder="O que você espera do site ou sistema..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+        <p class="form-status" id="form-status"></p>
+      </form>
+      <p class="form-note">Seus dados vão direto pra nossa equipe — retornamos o quanto antes.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <div class="footer-brand">
+      <img src="logo.png" alt="LRK.TECH">
+    </div>
+    <div class="footer-links">
+      <a href="#servicos">Serviços</a>
+      <a href="#projetos">Projetos</a>
+      <a href="https://instagram.com/lrktech" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <div class="copyright">© 2026 LRK.TECH — Sites e sistemas sob medida</div>
+  </div>
+</footer>
+
+<a class="wa-float" id="wa-float" href="#" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.84 14.03c-.25.7-1.23 1.28-2.02 1.45-.55.12-1.26.21-3.67-.79-2.98-1.23-4.9-4.24-5.05-4.44-.15-.2-1.21-1.61-1.21-3.07 0-1.46.76-2.17 1.03-2.47.27-.3.6-.37.8-.37.2 0 .4 0 .58.01.19.01.44-.07.68.53.25.6.86 2.06.93 2.21.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.48.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.77.84 2.08.99.3.15.5.23.58.35.08.13.08.72-.17 1.42z"/></svg>
+</a>
+
+<script>
+  const WHATSAPP_NUMBER = "5547996125434";
+  const MSG = encodeURIComponent("Olá! Vim pelo site da LRK.TECH e quero saber mais sobre criação de site/sistema.");
+  const link = `https://wa.me/${WHATSAPP_NUMBER}?text=${MSG}`;
+  const waFloat = document.getElementById('wa-float');
+  if (waFloat) waFloat.href = link;
+
+  // Formulário de orçamento -> e-mail (Web3Forms)
+  // Pegue sua chave grátis em https://web3forms.com usando o e-mail leoraye2004@gmail.com
+  // e cole aqui embaixo no lugar de "COLE_SUA_CHAVE_AQUI"
+  const WEB3FORMS_ACCESS_KEY = "7acd3626-e8cc-4ed8-bc5c-145c85d62558";
+
+  const quoteForm = document.getElementById('quote-form');
+  const quoteSubmitBtn = quoteForm.querySelector('button[type="submit"]');
+  const formStatus = document.getElementById('form-status');
+
+  quoteForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const nome = document.getElementById('q-nome').value.trim();
+    const negocio = document.getElementById('q-negocio').value;
+    const empresa = document.getElementById('q-empresa').value.trim();
+    const tipo = document.getElementById('q-tipo').value;
+    const mensagem = document.getElementById('q-msg').value.trim();
+
+    quoteSubmitBtn.disabled = true;
+    quoteSubmitBtn.textContent = "Enviando...";
+    formStatus.className = 'form-status';
+
+    if (!WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY === "COLE_SUA_CHAVE_AQUI") {
+      formStatus.textContent = "Formulário ainda não configurado — fale com a gente pelo WhatsApp.";
+      formStatus.className = 'form-status show warn';
+      quoteSubmitBtn.disabled = false;
+      quoteSubmitBtn.textContent = "Enviar";
+      return;
+    }
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `Novo orçamento pelo site — ${nome}`,
+          from_name: "LRK.TECH — Formulário do site",
+          nome, negocio, empresa, tipo, mensagem
+        })
+      });
+      if (!res.ok) throw new Error('Falha no envio');
+
+      formStatus.textContent = "Enviado com sucesso! Recebemos seus dados e vamos retornar em breve.";
+      formStatus.className = 'form-status show ok';
+      quoteForm.reset();
+    } catch (err) {
+      console.error('Falha ao enviar formulário:', err);
+      formStatus.textContent = "Não deu pra enviar agora. Tenta de novo ou fala com a gente pelo WhatsApp.";
+      formStatus.className = 'form-status show warn';
+    }
+
+    quoteSubmitBtn.disabled = false;
+    quoteSubmitBtn.textContent = "Enviar";
+  });
+
+  // Carousel de projetos
+  const track = document.getElementById('carousel');
+  const cards = Array.from(track.children);
+  const prevBtn = document.getElementById('carousel-prev');
+  const nextBtn = document.getElementById('carousel-next');
+  const dotsWrap = document.getElementById('carousel-dots');
+
+  cards.forEach((_, i) => {
+    const b = document.createElement('button');
+    b.className = 'dot-btn';
+    b.setAttribute('aria-label', `Ir para projeto ${i + 1}`);
+    b.addEventListener('click', () => cards[i].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' }));
+    dotsWrap.appendChild(b);
+  });
+  const dots = Array.from(dotsWrap.children);
+
+  function cardStep(){
+    const gap = 24;
+    return cards[0].getBoundingClientRect().width + gap;
+  }
+
+  function updateControls(){
+    const scrollLeft = track.scrollLeft;
+    const maxScroll = track.scrollWidth - track.clientWidth;
+    prevBtn.disabled = scrollLeft <= 4;
+    nextBtn.disabled = scrollLeft >= maxScroll - 4;
+
+    let closest = 0, closestDist = Infinity;
+    cards.forEach((c, i) => {
+      const dist = Math.abs(c.offsetLeft - scrollLeft);
+      if (dist < closestDist) { closestDist = dist; closest = i; }
+    });
+    dots.forEach((d, i) => d.classList.toggle('active', i === closest));
+  }
+
+  prevBtn.addEventListener('click', () => track.scrollBy({ left: -cardStep(), behavior: 'smooth' }));
+  nextBtn.addEventListener('click', () => track.scrollBy({ left: cardStep(), behavior: 'smooth' }));
+  track.addEventListener('scroll', () => window.requestAnimationFrame(updateControls));
+  window.addEventListener('resize', updateControls);
+  updateControls();
+</script>
+
+</body>
+</html>
