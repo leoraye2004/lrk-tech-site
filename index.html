@@ -580,6 +580,14 @@
           <input type="text" id="q-nome" name="nome" placeholder="Seu nome" required>
         </div>
         <div class="form-row">
+          <label for="q-whatsapp">WhatsApp / telefone</label>
+          <input type="tel" id="q-whatsapp" name="whatsapp" placeholder="(47) 99999-9999" inputmode="tel" autocomplete="tel" maxlength="20" required>
+        </div>
+        <div class="form-row">
+          <label for="q-email">E-mail (opcional)</label>
+          <input type="email" id="q-email" name="email" placeholder="voce@email.com" autocomplete="email">
+        </div>
+        <div class="form-row">
           <label for="q-negocio">Negócio / ramo</label>
           <select id="q-negocio" name="negocio" required>
             <option value="" disabled selected>Selecione uma opção</option>
@@ -653,8 +661,27 @@
   const quoteSubmitBtn = quoteForm.querySelector('button[type="submit"]');
   const formStatus = document.getElementById('form-status');
 
+  // Máscara de telefone: (47) 99999-9999
+  const whatsappInput = document.getElementById('q-whatsapp');
+  whatsappInput.addEventListener('input', () => {
+    const d = whatsappInput.value.replace(/\D/g, '').slice(0, 11);
+    let v = d;
+    if (d.length > 2) v = `(${d.slice(0, 2)}) ${d.slice(2)}`;
+    if (d.length > 6) v = `(${d.slice(0, 2)}) ${d.slice(2, d.length - 4)}-${d.slice(-4)}`;
+    whatsappInput.value = v;
+    whatsappInput.setCustomValidity('');
+  });
+
   quoteForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+    const whatsapp = whatsappInput.value.trim();
+    const whatsappDigits = whatsapp.replace(/\D/g, '');
+    if (whatsappDigits.length < 10) {
+      whatsappInput.setCustomValidity('Informe o WhatsApp com DDD, ex: (47) 99999-9999');
+      whatsappInput.reportValidity();
+      return;
+    }
+    const email = document.getElementById('q-email').value.trim();
     const nome = document.getElementById('q-nome').value.trim();
     const negocio = document.getElementById('q-negocio').value;
     const empresa = document.getElementById('q-empresa').value.trim();
@@ -681,10 +708,15 @@
           access_key: WEB3FORMS_ACCESS_KEY,
           subject: `Novo orçamento pelo site — ${nome}`,
           from_name: "LRK.TECH — Formulário do site",
-          nome, negocio, empresa, tipo, mensagem
+          nome,
+          whatsapp,
+          "Abrir conversa no WhatsApp": `https://wa.me/55${whatsappDigits}`,
+          ...(email && { email }),
+          negocio, empresa, tipo, mensagem
         })
       });
-      if (!res.ok) throw new Error('Falha no envio');
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || data.success === false) throw new Error(data.message || 'Falha no envio');
 
       formStatus.textContent = "Enviado com sucesso! Recebemos seus dados e vamos retornar em breve.";
       formStatus.className = 'form-status show ok';
