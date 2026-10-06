@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Ads com IA para negócios locais | LRK TECH</title>
+<meta name="description" content="Anúncios no Google para quem já quer contratar. Pesquisa com dados oficiais do Google, análise com IA, página que converte e relatório toda semana. Brasil e brasileiros nos EUA.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Google Ads com IA para negócios locais | LRK TECH">
+<meta property="og:description" content="Anúncios no Google para quem já quer contratar. Pesquisa com dados oficiais do Google, análise com IA, página que converte e relatório toda semana. Brasil e brasileiros nos EUA.">
+<meta property="og:image" content="/logo.png">
+<link rel="icon" href="/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+  :root{
+    --navy-950:#050a17;
+    --navy-900:#0a1128;
+    --navy-800:#0f1b3d;
+    --navy-700:#152552;
+    --blue-500:#1266f1;
+    --blue-400:#3d84ff;
+    --blue-300:#6fa3ff;
+    --ice-100:#eef3ff;
+    --ice-300:#c3d3f5;
+    --slate-400:#8593b8;
+    --white:#ffffff;
+    --green:#25D366;
+    --radius-lg:20px;
+    --radius-md:12px;
+    --maxw:1160px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--navy-950);
+    color:var(--ice-100);
+    font-family:'Inter', sans-serif;
+    line-height:1.55;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+      radial-gradient(circle at 15% 8%, rgba(18,102,241,0.20), transparent 45%),
+      radial-gradient(circle at 85% 25%, rgba(61,132,255,0.14), transparent 40%);
+    pointer-events:none;
+    z-index:0;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px; position:relative; z-index:1;}
+  h1,h2,h3{font-family:'Space Grotesk', sans-serif; letter-spacing:-0.02em;}
+  .mono{font-family:'JetBrains Mono', monospace;}
+  a{color:inherit; text-decoration:none;}
+  ::selection{background:var(--blue-500); color:#fff;}
+
+  /* NAV */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(5,10,23,0.75);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(111,163,255,0.12);
+  }
+  nav{
+    max-width:var(--maxw); margin:0 auto; padding:16px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{display:flex; align-items:center; gap:10px; font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:1.15rem;}
+  .brand img{width:36px; height:36px; display:block; object-fit:contain;}
+  .nav-links{display:flex; gap:32px; font-size:0.92rem; color:var(--ice-300);}
+  .nav-links a{transition:color .2s;}
+  .nav-links a:hover,
+  .nav-links a[aria-current="page"]{color:var(--white);}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:11px 22px; border-radius:100px;
+    font-weight:600; font-size:0.9rem;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    white-space:nowrap;
+  }
+  .btn svg{width:18px; height:18px; flex:none;}
+  .btn-primary{
+    background:linear-gradient(135deg, var(--blue-400), var(--blue-500));
+    color:#fff;
+    box-shadow:0 8px 24px rgba(18,102,241,0.35);
+  }
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 12px 30px rgba(18,102,241,0.5);}
+  .btn-ghost{
+    border:1px solid rgba(195,211,245,0.25);
+    color:var(--ice-100);
+  }
+  .btn-ghost:hover{border-color:var(--blue-300); background:rgba(61,132,255,0.08);}
+  .btn-lg{padding:15px 30px; font-size:1rem;}
+  .nav-cta{display:none;}
+  @media(min-width:860px){ .nav-cta{display:inline-flex;} }
+  @media(max-width:859px){ .nav-links{display:none;} }
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:0.78rem; color:var(--blue-300);
+    letter-spacing:0.08em; text-transform:uppercase;
+    margin-bottom:22px;
+  }
+  .eyebrow .dot{width:6px; height:6px; border-radius:50%; background:var(--blue-400); box-shadow:0 0 12px var(--blue-400); animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;} 50%{opacity:.35;}}
+  h1{font-size:clamp(2.4rem, 5.6vw, 4.1rem); font-weight:700; line-height:1.04; color:var(--white); margin-bottom:22px;}
+  h1 span{
+    background:linear-gradient(120deg, var(--blue-300), var(--blue-400) 60%, #9cc0ff);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+
+  /* SECTIONS shared */
+  section{padding:88px 0; position:relative; z-index:1; scroll-margin-top:70px;}
+  .section-head{max-width:640px; margin-bottom:52px;}
+  .section-head .eyebrow{margin-bottom:14px;}
+  .section-head h2{font-size:clamp(1.7rem, 3.2vw, 2.4rem); color:var(--white); margin-bottom:14px; line-height:1.15;}
+  .section-head p{color:var(--ice-300); font-size:1rem;}
+  .alt{background:var(--navy-900); border-top:1px solid rgba(111,163,255,0.1); border-bottom:1px solid rgba(111,163,255,0.1);}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:72px 0 88px;}
+  .hero-grid{display:grid; grid-template-columns:1fr; gap:56px; align-items:center;}
+  @media(min-width:980px){ .hero-grid{grid-template-columns:1.02fr 1fr; gap:48px;} }
+  .hero p.lead{font-size:1.1rem; color:var(--ice-300); max-width:540px; margin-bottom:34px;}
+  .hero-actions{display:flex; flex-wrap:wrap; gap:14px; margin-bottom:38px;}
+  .pillars{display:flex; flex-wrap:wrap; gap:10px;}
+  .pillar{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:8px 14px; border-radius:100px;
+    background:rgba(18,102,241,0.10);
+    border:1px solid rgba(111,163,255,0.22);
+    font-size:0.84rem; color:var(--ice-100);
+  }
+  .pillar svg{width:15px; height:15px; color:var(--blue-300); flex:none;}
+  @media(max-width:979px){
+    .hero-copy{text-align:center;}
+    .hero-copy .eyebrow{justify-content:center;}
+    .hero p.lead{margin-left:auto; margin-right:auto;}
+    .hero-actions, .pillars{justify-content:center;}
+  }
+
+  /* SERP mockup (ilustração) */
+  .serp-stage{position:relative; max-width:540px; width:100%; margin:0 auto; padding:0 6px 40px;}
+  .serp-stage::before{
+    content:""; position:absolute; inset:8% 0 4%;
+    background:radial-gradient(closest-side, rgba(61,132,255,0.35), transparent);
+    filter:blur(30px); z-index:0;
+  }
+  .serp{
+    position:relative; z-index:1;
+    background:var(--navy-800);
+    border:1px solid rgba(111,163,255,0.25);
+    border-radius:18px;
+    box-shadow:0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.02) inset;
+    overflow:hidden;
+  }
+  .serp-bar{display:flex; align-items:center; gap:7px; padding:12px 16px; border-bottom:1px solid rgba(111,163,255,0.14);}
+  .serp-bar i{width:10px; height:10px; border-radius:50%; background:rgba(195,211,245,0.22);}
+  .serp-bar .url{
+    margin-left:12px; flex:1; height:22px; border-radius:100px;
+    background:rgba(255,255,255,0.05);
+    font-family:'JetBrains Mono', monospace; font-size:0.68rem; color:var(--slate-400);
+    display:flex; align-items:center; padding:0 12px;
+  }
+  .serp-page{background:#f7f9fd; padding:22px 22px 26px; min-height:330px; color:#1f2937;}
+  .serp-search{
+    display:flex; align-items:center; gap:10px;
+    background:#fff; border:1px solid #dfe3eb; border-radius:100px;
+    padding:11px 18px; box-shadow:0 2px 8px rgba(15,27,61,0.08);
+    font-size:0.95rem; color:#111827; margin-bottom:20px;
+  }
+  .serp-search svg{width:18px; height:18px; color:#6b7280; flex:none;}
+  .serp-q{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .caret{width:2px; height:18px; background:#1266f1; margin-left:-6px; animation:blink 1s steps(1) infinite;}
+  @keyframes blink{50%{opacity:0;}}
+  .serp-results{transition:opacity .4s ease, transform .4s ease;}
+  .serp-ad{
+    position:relative;
+    background:#fff; border:1px solid #e3e8f2; border-radius:14px;
+    padding:14px 16px 14px; margin-bottom:14px;
+    transition:box-shadow .3s, border-color .3s, transform .3s;
+  }
+  .serp-ad.clicked{border-color:#3d84ff; box-shadow:0 0 0 4px rgba(61,132,255,0.18); transform:scale(1.01);}
+  .ad-sponsored{font-size:0.72rem; font-weight:700; color:#111827; margin-bottom:8px; display:block;}
+  .ad-meta{display:flex; align-items:center; gap:10px; margin-bottom:6px;}
+  .ad-fav{
+    width:26px; height:26px; border-radius:50%;
+    background:linear-gradient(135deg, var(--blue-400), var(--blue-500));
+    color:#fff; font-weight:700; font-size:0.72rem;
+    display:flex; align-items:center; justify-content:center; flex:none;
+  }
+  .ad-meta b{display:block; font-size:0.8rem; color:#111827; line-height:1.2;}
+  .ad-meta small{display:block; font-size:0.72rem; color:#4b5563; line-height:1.2;}
+  .ad-title{font-size:1.05rem; color:#1a0dab; font-weight:500; line-height:1.3; margin-bottom:4px;}
+  .ad-desc{font-size:0.82rem; color:#4b5563; line-height:1.45;}
+  .ad-links{display:flex; flex-wrap:wrap; gap:6px 14px; margin-top:10px; font-size:0.78rem; color:#1a0dab;}
+  .ai-chip{
+    position:absolute; top:-12px; right:12px;
+    display:inline-flex; align-items:center; gap:6px;
+    padding:5px 10px; border-radius:100px;
+    background:var(--navy-900); color:var(--ice-100);
+    border:1px solid rgba(111,163,255,0.45);
+    font-family:'JetBrains Mono', monospace; font-size:0.66rem; letter-spacing:0.02em;
+    box-shadow:0 6px 18px rgba(5,10,23,0.25);
+  }
+  .ai-chip i{width:6px; height:6px; border-radius:50%; background:#4ade80; box-shadow:0 0 8px #4ade80;}
+  .serp-org{padding:6px 4px 14px;}
+  .serp-org i{display:block; height:9px; border-radius:6px; background:#e3e8f2; margin-bottom:8px;}
+  .serp-org i:first-child{background:#cfd8ea; height:11px;}
+
+  .cursor{
+    position:absolute; z-index:3; left:0; top:0;
+    width:26px; height:26px;
+    transform:translate(calc(var(--sw, 300px) - 60px), 300px);
+    transition:transform .9s cubic-bezier(.5,.05,.25,1);
+    filter:drop-shadow(0 3px 6px rgba(0,0,0,0.35));
+    pointer-events:none;
+  }
+  .cursor.press{animation:press .25s ease;}
+  @keyframes press{50%{scale:.82;}}
+
+  .wa-toast{
+    position:absolute; z-index:4; left:0; right:auto; bottom:0;
+    width:min(330px, 88%);
+    display:flex; gap:12px; align-items:flex-start;
+    background:#0f1b3d; border:1px solid rgba(37,211,102,0.45);
+    border-radius:16px; padding:13px 15px;
+    box-shadow:0 18px 40px rgba(0,0,0,0.5);
+    transition:opacity .35s ease, transform .35s ease;
+  }
+  .wa-toast .wa-ico{width:34px; height:34px; border-radius:50%; background:var(--green); display:flex; align-items:center; justify-content:center; flex:none;}
+  .wa-toast .wa-ico svg{width:19px; height:19px;}
+  .wa-toast b{display:block; font-size:0.8rem; color:var(--white); margin-bottom:2px;}
+  .wa-toast span.msg{display:block; font-size:0.8rem; color:var(--ice-300); line-height:1.4;}
+  .wa-toast .time{font-family:'JetBrains Mono', monospace; font-size:0.66rem; color:var(--slate-400); margin-left:auto; padding-left:8px;}
+
+  .is-hidden{opacity:0; transform:translateY(10px);}
+
+  /* ---------- JORNADA ---------- */
+  .journey{padding:0 0 88px;}
+  .journey-track{
+    display:grid; grid-template-columns:1fr; gap:14px;
+    background:linear-gradient(160deg, var(--navy-800), var(--navy-900));
+    border:1px solid rgba(111,163,255,0.16);
+    border-radius:var(--radius-lg);
+    padding:30px;
+  }
+  @media(min-width:860px){ .journey-track{grid-template-columns:repeat(4, 1fr); gap:0; padding:34px 18px;} }
+  .j-step{position:relative; padding:6px 18px; display:flex; gap:14px; align-items:flex-start;}
+  @media(min-width:860px){
+    .j-step{flex-direction:column; text-align:left;}
+    .j-step:not(:last-child)::after{
+      content:""; position:absolute; top:28px; left:76px; right:-6px; height:1px;
+      background:linear-gradient(90deg, rgba(111,163,255,0.55), rgba(111,163,255,0.05));
+    }
+  }
+  .j-ico{
+    width:46px; height:46px; border-radius:12px; flex:none;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(18,102,241,0.14); color:var(--blue-300);
+    border:1px solid rgba(111,163,255,0.25);
+  }
+  .j-ico svg{width:22px; height:22px;}
+  .j-step.final .j-ico{background:rgba(37,211,102,0.14); color:#4ade80; border-color:rgba(37,211,102,0.4);}
+  .j-step small{display:block; font-family:'JetBrains Mono', monospace; font-size:0.7rem; color:var(--blue-300); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:4px;}
+  .j-step h3{font-size:1rem; color:var(--white); margin-bottom:4px;}
+  .j-step p{font-size:0.86rem; color:var(--slate-400);}
+  .journey-note{margin-top:18px; text-align:center; font-size:0.9rem; color:var(--ice-300);}
+  .journey-note b{color:var(--white); font-weight:600;}
+
+  /* ---------- PROBLEMA ---------- */
+  .compare{display:grid; grid-template-columns:1fr; gap:20px;}
+  @media(min-width:760px){ .compare{grid-template-columns:1fr 1fr;} }
+  .cmp-card{
+    border-radius:var(--radius-lg); padding:30px 28px;
+    border:1px solid rgba(111,163,255,0.14);
+    background:var(--navy-800);
+  }
+  .cmp-card .cmp-top{display:flex; align-items:center; gap:12px; margin-bottom:18px;}
+  .cmp-ico{width:42px; height:42px; border-radius:12px; display:flex; align-items:center; justify-content:center; flex:none;}
+  .cmp-ico svg{width:20px; height:20px;}
+  .cmp-card .label{font-family:'JetBrains Mono', monospace; font-size:0.74rem; letter-spacing:0.06em; text-transform:uppercase;}
+  .cmp-card h3{color:var(--white); font-size:1.25rem; margin-bottom:10px; line-height:1.25;}
+  .cmp-card p{color:var(--slate-400); font-size:0.95rem;}
+  .cmp-bad .cmp-ico{background:rgba(133,147,184,0.12); color:var(--slate-400);}
+  .cmp-bad .label{color:var(--slate-400);}
+  .cmp-good{
+    background:linear-gradient(160deg, rgba(18,102,241,0.22), var(--navy-800) 60%);
+    border-color:rgba(61,132,255,0.5);
+  }
+  .cmp-good .cmp-ico{background:rgba(61,132,255,0.2); color:var(--blue-300);}
+  .cmp-good .label{color:var(--blue-300);}
+  .warn-card{
+    margin-top:20px;
+    display:flex; gap:18px; align-items:flex-start;
+    border-radius:var(--radius-lg); padding:26px 28px;
+    border:1px dashed rgba(111,163,255,0.3);
+    background:rgba(5,10,23,0.4);
+  }
+  .warn-card .cmp-ico{background:rgba(250,204,21,0.12); color:#fcd34d;}
+  .warn-card h3{color:var(--white); font-size:1.1rem; margin-bottom:6px;}
+  .warn-card p{color:var(--slate-400); font-size:0.95rem;}
+
+  /* ---------- PROCESSO (timeline) ---------- */
+  .process-grid{display:grid; grid-template-columns:1fr; gap:40px;}
+  @media(min-width:980px){
+    .process-grid{grid-template-columns:0.85fr 1.15fr; gap:64px;}
+    .process-grid .section-head{position:sticky; top:110px; align-self:start; margin-bottom:0;}
+  }
+  .timeline{list-style:none; position:relative;}
+  .timeline::before{
+    content:""; position:absolute; left:23px; top:10px; bottom:10px; width:2px;
+    background:linear-gradient(180deg, var(--blue-400), rgba(61,132,255,0.08));
+  }
+  .tl-item{position:relative; padding:0 0 30px 72px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-num{
+    position:absolute; left:0; top:0;
+    width:48px; height:48px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--navy-900); border:1px solid rgba(111,163,255,0.4);
+    font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:var(--blue-300);
+    box-shadow:0 0 0 6px var(--navy-950);
+  }
+  .tl-card{
+    background:var(--navy-800);
+    border:1px solid rgba(111,163,255,0.14);
+    border-radius:var(--radius-md);
+    padding:20px 22px;
+    transition:border-color .2s, transform .2s;
+  }
+  .tl-card:hover{border-color:var(--blue-400); transform:translateX(4px);}
+  .tl-card h3{color:var(--white); font-size:1.08rem; margin-bottom:6px; display:flex; flex-wrap:wrap; align-items:center; gap:10px;}
+  .tl-card p{color:var(--slate-400); font-size:0.93rem;}
+  .badge{
+    font-family:'JetBrains Mono', monospace; font-size:0.66rem; letter-spacing:0.05em; text-transform:uppercase;
+    padding:4px 9px; border-radius:100px;
+    background:rgba(18,102,241,0.2); color:#dbe8ff; border:1px solid rgba(18,102,241,0.5);
+  }
+  .badge.green{background:rgba(74,222,128,0.14); color:#c3f5d6; border-color:rgba(74,222,128,0.4);}
+
+  /* ---------- IA NA PRÁTICA ---------- */
+  .ai-grid{display:grid; grid-template-columns:1fr; gap:40px; align-items:center;}
+  @media(min-width:980px){ .ai-grid{grid-template-columns:1fr 1.1fr; gap:64px;} }
+  .ai-h2{font-size:clamp(1.7rem, 3.2vw, 2.4rem); color:var(--white); margin-bottom:14px; line-height:1.15;}
+  .ai-lead{color:var(--ice-300); margin-bottom:22px;}
+  .ai-points{list-style:none; display:grid; gap:16px; margin-top:8px;}
+  .ai-points li{display:flex; gap:14px; align-items:flex-start; color:var(--ice-300); font-size:0.97rem;}
+  .ai-points li svg{width:20px; height:20px; color:var(--blue-300); flex:none; margin-top:2px;}
+  .ai-points b{color:var(--white); font-weight:600;}
+  .ai-panel{
+    background:linear-gradient(160deg, var(--navy-800), var(--navy-900));
+    border:1px solid rgba(111,163,255,0.22);
+    border-radius:var(--radius-lg);
+    overflow:hidden;
+    box-shadow:0 24px 60px rgba(0,0,0,0.35);
+  }
+  .ai-panel-head{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    padding:16px 20px; border-bottom:1px solid rgba(111,163,255,0.14);
+  }
+  .ai-panel-head b{font-family:'Space Grotesk', sans-serif; font-size:0.98rem; color:var(--white);}
+  .ai-panel-head span{font-family:'JetBrains Mono', monospace; font-size:0.68rem; color:var(--slate-400); text-transform:uppercase; letter-spacing:0.06em;}
+  .ai-row{
+    display:grid; grid-template-columns:1fr auto; gap:6px 14px; align-items:center;
+    padding:14px 20px; border-bottom:1px solid rgba(111,163,255,0.08);
+  }
+  .ai-row:last-of-type{border-bottom:none;}
+  .ai-row .term{font-family:'JetBrains Mono', monospace; font-size:0.84rem; color:var(--ice-100);}
+  .ai-row .why{grid-column:1 / -1; font-size:0.8rem; color:var(--slate-400);}
+  .verdict{font-family:'JetBrains Mono', monospace; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.05em; padding:4px 10px; border-radius:100px; white-space:nowrap;}
+  .v-keep{background:rgba(74,222,128,0.14); color:#86efac; border:1px solid rgba(74,222,128,0.4);}
+  .v-cut{background:rgba(248,113,113,0.12); color:#fca5a5; border:1px solid rgba(248,113,113,0.38);}
+  .v-adjust{background:rgba(250,204,21,0.10); color:#fde68a; border:1px solid rgba(250,204,21,0.35);}
+  .ai-foot{padding:12px 20px; font-size:0.74rem; color:var(--slate-400); background:rgba(5,10,23,0.35); border-top:1px solid rgba(111,163,255,0.1);}
+
+  /* ---------- POR QUE (bento) ---------- */
+  .bento{display:grid; grid-template-columns:1fr; gap:20px;}
+  @media(min-width:760px){ .bento{grid-template-columns:repeat(6, 1fr);} .bento > *{grid-column:span 2;} .bento > .wide{grid-column:span 3;} }
+  .why-card{
+    background:var(--navy-800);
+    border:1px solid rgba(111,163,255,0.14);
+    border-radius:var(--radius-md);
+    padding:28px 24px;
+    transition:border-color .2s, transform .2s;
+  }
+  .why-card:hover{border-color:var(--blue-400); transform:translateY(-4px);}
+  .why-card .w-ico{
+    width:42px; height:42px; border-radius:11px; margin-bottom:18px;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(18,102,241,0.14); color:var(--blue-300);
+  }
+  .why-card .w-ico svg{width:21px; height:21px;}
+  .why-card h3{color:var(--white); font-size:1.15rem; margin-bottom:8px;}
+  .why-card p{color:var(--slate-400); font-size:0.93rem;}
+  .why-card.highlight{background:linear-gradient(160deg, rgba(18,102,241,0.2), var(--navy-800) 65%); border-color:rgba(61,132,255,0.45);}
+
+  /* ---------- PARA QUEM ---------- */
+  .segment-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:14px;}
+  @media(min-width:640px){ .segment-grid{grid-template-columns:repeat(3, 1fr);} }
+  .segment-chip{
+    display:flex; align-items:center; gap:12px;
+    background:var(--navy-800);
+    border:1px solid rgba(111,163,255,0.14);
+    border-radius:var(--radius-md);
+    padding:18px 16px;
+    transition:border-color .2s, transform .2s, background .2s;
+  }
+  .segment-chip:hover{border-color:var(--blue-400); transform:translateY(-3px); background:var(--navy-700);}
+  .segment-chip .icon{
+    width:38px; height:38px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:10px;
+    background:rgba(18,102,241,0.14);
+    color:var(--blue-300);
+  }
+  .segment-chip .icon svg{width:19px; height:19px;}
+  .segment-chip{min-width:0;}
+  .segment-chip span{color:var(--ice-100); font-size:0.92rem; font-weight:500;}
+  .regions{display:grid; grid-template-columns:1fr; gap:20px; margin-top:20px;}
+  @media(min-width:760px){ .regions{grid-template-columns:1fr 1fr;} }
+  .region{
+    display:flex; gap:16px; align-items:flex-start;
+    border-radius:var(--radius-md); padding:22px 24px;
+    background:rgba(18,102,241,0.07); border:1px solid rgba(111,163,255,0.2);
+  }
+  .region .code{
+    font-family:'JetBrains Mono', monospace; font-size:0.8rem; font-weight:500;
+    padding:8px 10px; border-radius:10px; flex:none;
+    background:var(--navy-900); border:1px solid rgba(111,163,255,0.3); color:var(--blue-300);
+  }
+  .region h3{color:var(--white); font-size:1.02rem; margin-bottom:4px;}
+  .region p{color:var(--slate-400); font-size:0.9rem;}
+
+  /* ---------- O QUE VOCÊ RECEBE ---------- */
+  .deliver{
+    display:grid; grid-template-columns:1fr; gap:0;
+    background:var(--navy-800);
+    border:1px solid rgba(111,163,255,0.16);
+    border-radius:var(--radius-lg);
+    overflow:hidden;
+  }
+  @media(min-width:900px){ .deliver{grid-template-columns:1.5fr 1fr;} }
+  .deliver-list{list-style:none; display:grid; grid-template-columns:1fr; gap:4px 28px; padding:32px;}
+  @media(min-width:560px){ .deliver-list{grid-template-columns:1fr 1fr;} }
+  .deliver-list li{display:flex; align-items:center; gap:12px; padding:10px 0; color:var(--ice-100); font-size:0.95rem; border-bottom:1px solid rgba(111,163,255,0.08);}
+  .deliver-list li .ck{width:24px; height:24px; border-radius:50%; flex:none; display:flex; align-items:center; justify-content:center; background:rgba(18,102,241,0.18); color:var(--blue-300);}
+  .deliver-list li .ck svg{width:13px; height:13px;}
+  .deliver-cta{
+    padding:32px;
+    background:linear-gradient(160deg, rgba(18,102,241,0.25), rgba(10,17,40,0.6));
+    border-top:1px solid rgba(111,163,255,0.16);
+    display:flex; flex-direction:column; justify-content:center; gap:14px;
+  }
+  @media(min-width:900px){ .deliver-cta{border-top:none; border-left:1px solid rgba(111,163,255,0.16);} }
+  .deliver-cta h3{color:var(--white); font-size:1.3rem; line-height:1.25;}
+  .deliver-cta p{color:var(--ice-300); font-size:0.93rem;}
+  .deliver-cta .btn{align-self:flex-start;}
+
+  /* ---------- FAQ ---------- */
+  .faq-grid{display:grid; grid-template-columns:1fr; gap:32px;}
+  @media(min-width:980px){ .faq-grid{grid-template-columns:0.8fr 1.2fr; gap:64px;} .faq-grid .section-head{margin-bottom:0;} }
+  .faq{display:grid; gap:12px;}
+  .faq details{
+    background:var(--navy-800);
+    border:1px solid rgba(111,163,255,0.14);
+    border-radius:var(--radius-md);
+    transition:border-color .2s;
+  }
+  .faq details[open]{border-color:rgba(111,163,255,0.4);}
+  .faq summary{
+    cursor:pointer; list-style:none;
+    padding:20px 24px;
+    display:flex; justify-content:space-between; align-items:center; gap:16px;
+    font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:1.02rem; color:var(--white);
+  }
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary::after{
+    content:""; flex:none; width:18px; height:18px;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236fa3ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") center/contain no-repeat;
+    transition:transform .2s;
+  }
+  .faq details[open] summary::after{transform:rotate(180deg);}
+  .faq summary:focus-visible{outline:2px solid var(--blue-400); outline-offset:2px; border-radius:var(--radius-md);}
+  .faq details p{padding:0 24px 22px; color:var(--slate-400); font-size:0.94rem;}
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final{padding:40px 0 110px;}
+  .cta-panel{
+    position:relative; overflow:hidden; text-align:center;
+    border-radius:28px; padding:72px 28px;
+    background:
+      radial-gradient(circle at 20% 0%, rgba(61,132,255,0.35), transparent 50%),
+      radial-gradient(circle at 85% 100%, rgba(18,102,241,0.35), transparent 50%),
+      var(--navy-800);
+    border:1px solid rgba(111,163,255,0.3);
+  }
+  .cta-panel h2{font-size:clamp(1.8rem, 4vw, 2.7rem); color:var(--white); margin:0 auto 16px; max-width:760px; line-height:1.15;}
+  .cta-panel p{color:var(--ice-300); margin:0 auto 34px; font-size:1.05rem; max-width:560px;}
+  .cta-panel .eyebrow{justify-content:center;}
+  .cta-panel small{display:block; margin-top:18px; font-size:0.8rem; color:var(--slate-400);}
+
+  footer{
+    border-top:1px solid rgba(111,163,255,0.12);
+    padding:36px 0;
+    position:relative; z-index:1;
+  }
+  .footer-row{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:16px;}
+  .footer-brand{display:flex; align-items:center; gap:10px; font-family:'Space Grotesk', sans-serif; font-weight:700;}
+  .footer-brand img{width:28px; height:28px; object-fit:contain;}
+  .footer-links{display:flex; flex-wrap:wrap; gap:22px; font-size:0.86rem; color:var(--slate-400);}
+  .footer-links a:hover{color:var(--blue-300);}
+  .copyright{font-size:0.8rem; color:var(--slate-400); font-family:'JetBrains Mono', monospace;}
+
+  /* WHATSAPP FLOAT */
+  .wa-float{
+    position:fixed; z-index:60;
+    bottom:22px; right:22px;
+    width:58px; height:58px;
+    background:#25D366;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 8px 24px rgba(0,0,0,0.35);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .wa-float:hover{transform:translateY(-3px) scale(1.05); box-shadow:0 12px 30px rgba(0,0,0,0.45);}
+  .wa-float svg{width:30px; height:30px;}
+
+  /* Reveal ao rolar (só com JS) */
+  .js .reveal{opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease;}
+  .js .reveal.in{opacity:1; transform:none;}
+
+  @media(prefers-reduced-motion: reduce){
+    .eyebrow .dot, .caret{animation:none;}
+    html{scroll-behavior:auto;}
+    .js .reveal{opacity:1; transform:none; transition:none;}
+    .cursor, .serp-results, .wa-toast{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="brand" href="/" aria-label="LRK.TECH — página inicial">
+      <img src="/logo.png" alt="LRK.TECH">
+    </a>
+    <div class="nav-links">
+      <a href="/#servicos">Serviços</a>
+      <a href="/google-ads" aria-current="page">Google Ads</a>
+      <a href="/#projetos">Projetos</a>
+      <a href="#como-funciona">Como funciona</a>
+    </div>
+    <a class="btn btn-primary nav-cta" data-wa href="https://wa.me/5547996125434" target="_blank" rel="noopener">Diagnóstico grátis</a>
+  </nav>
+</header>
+
+<main>
+  <!-- a) TOPO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="dot"></span> Google Ads com IA · Site + anúncio</div>
+        <h1>Do clique ao <span>cliente</span>.</h1>
+        <p class="lead">Anúncios no Google para quem já está procurando o seu serviço, com pesquisa de mercado, página feita para converter e acompanhamento toda semana.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" data-wa href="https://wa.me/5547996125434" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2z"/></svg>
+            Quero um diagnóstico grátis
+          </a>
+          <a class="btn btn-ghost btn-lg" href="#como-funciona">Ver como funciona</a>
+        </div>
+        <div class="pillars">
+          <span class="pillar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z"/></svg> Estratégia com IA</span>
+          <span class="pillar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg> Seu negócio no topo da busca</span>
+          <span class="pillar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg> Atraímos quem já procura</span>
+        </div>
+      </div>
+
+      <!-- Ilustração: busca -> anúncio no topo -> clique -> WhatsApp -->
+      <div class="serp-stage" role="img" aria-label="Ilustração: alguém pesquisa um serviço, o anúncio do seu negócio aparece no topo como patrocinado, a pessoa clica e chama no WhatsApp.">
+        <div class="serp" aria-hidden="true">
+          <div class="serp-bar"><i></i><i></i><i></i><span class="url">pesquisa</span></div>
+          <div class="serp-page">
+            <div class="serp-search">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+              <span class="serp-q" id="serp-q">limpeza de sofá perto de mim</span><span class="caret"></span>
+            </div>
+            <div class="serp-results" id="serp-results">
+              <div class="serp-ad" id="serp-ad">
+                <span class="ai-chip"><i></i>IA · intenção de contratar</span>
+                <span class="ad-sponsored">Patrocinado</span>
+                <div class="ad-meta">
+                  <span class="ad-fav">SN</span>
+                  <div><b>Seu Negócio</b><small>seunegocio.com.br</small></div>
+                </div>
+                <div class="ad-title" id="serp-title">Limpeza de Sofá e Estofados | Orçamento no WhatsApp</div>
+                <p class="ad-desc">Atendemos a sua região. Peça o seu orçamento agora, direto pelo WhatsApp.</p>
+                <div class="ad-links"><span>Serviços</span><span>Como funciona</span><span>Falar no WhatsApp</span></div>
+              </div>
+              <div class="serp-org"><i style="width:38%"></i><i style="width:92%"></i><i style="width:74%"></i></div>
+              <div class="serp-org"><i style="width:30%"></i><i style="width:86%"></i></div>
+            </div>
+          </div>
+        </div>
+        <svg class="cursor" id="serp-cursor" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 2l16 9.5-7 1.6-3.6 6.9z" fill="#fff" stroke="#050a17" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        <div class="wa-toast" id="wa-toast" aria-hidden="true">
+          <span class="wa-ico"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2z"/></svg></span>
+          <div><b>Novo contato pelo anúncio</b><span class="msg">“Olá! Vi o anúncio no Google e quero um orçamento.”</span></div>
+          <span class="time">agora</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Jornada: o caminho inteiro -->
+  <section class="journey" aria-label="O caminho do cliente">
+    <div class="wrap">
+      <div class="journey-track reveal">
+        <div class="j-step">
+          <span class="j-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></span>
+          <div><small>01 · Busca</small><h3>A pessoa pesquisa</h3><p>Ela já sabe o que quer e procura no Google.</p></div>
+        </div>
+        <div class="j-step">
+          <span class="j-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
+          <div><small>02 · Anúncio</small><h3>Encontra você no topo</h3><p>Anúncio na rede de pesquisa, com a mensagem certa.</p></div>
+        </div>
+        <div class="j-step">
+          <span class="j-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h8"/></svg></span>
+          <div><small>03 · Página</small><h3>Cai na página certa</h3><p>Feita para o anúncio, fala o que ele promete.</p></div>
+        </div>
+        <div class="j-step final">
+          <span class="j-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2z"/></svg></span>
+          <div><small>04 · Contato</small><h3>Chama no WhatsApp</h3><p>Cada contato rastreado, pra saber o que funciona.</p></div>
+        </div>
+      </div>
+      <p class="journey-note reveal">A LRK TECH cuida <b>do caminho inteiro</b>: do anúncio até a conversa no WhatsApp.</p>
+    </div>
+  </section>
+
+  <!-- b) O PROBLEMA -->
+  <section class="alt" id="problema">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">O problema</div>
+        <h2>Curtida não paga conta. Cliente paga.</h2>
+        <p>Não adianta aparecer pra todo mundo. O que importa é aparecer pra quem está procurando.</p>
+      </div>
+      <div class="compare">
+        <div class="cmp-card cmp-bad reveal">
+          <div class="cmp-top">
+            <span class="cmp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11v9H4v-9zM7 11l4-8a2.5 2.5 0 0 1 2.5 2.5V9h5.2a2 2 0 0 1 2 2.3l-1.2 7A2 2 0 0 1 17.5 20H7"/></svg></span>
+            <span class="label">Impulsionar post</span>
+          </div>
+          <h3>Traz curtida, não cliente.</h3>
+          <p>O post aparece pra quem está rolando o feed, distraído, sem estar procurando nada.</p>
+        </div>
+        <div class="cmp-card cmp-good reveal">
+          <div class="cmp-top">
+            <span class="cmp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></span>
+            <span class="label">Anúncio no Google</span>
+          </div>
+          <h3>Quem pesquisa já quer contratar.</h3>
+          <p>O anúncio aparece na hora em que a pessoa digita o serviço que você oferece.</p>
+        </div>
+      </div>
+      <div class="warn-card reveal">
+        <span class="cmp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.3 3.9L2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></span>
+        <div>
+          <h3>Muita agência só sobe o anúncio e manda print.</h3>
+          <p>Sem página boa e sem acompanhamento, o dinheiro vai embora em clique que não vira contato.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- c) COMO A GENTE TRABALHA -->
+  <section id="como-funciona">
+    <div class="wrap process-grid">
+      <div class="section-head reveal">
+        <div class="eyebrow">Como a gente trabalha</div>
+        <h2>Seis passos, do briefing ao relatório.</h2>
+        <p>Você aprova tudo antes de gastar. Depois do lançamento, a campanha é ajustada toda semana.</p>
+      </div>
+      <ol class="timeline">
+        <li class="tl-item reveal">
+          <span class="tl-num">01</span>
+          <div class="tl-card">
+            <h3>Briefing</h3>
+            <p>Entendemos o negócio, a região, o ticket e quantos clientes vocês conseguem atender.</p>
+          </div>
+        </li>
+        <li class="tl-item reveal">
+          <span class="tl-num">02</span>
+          <div class="tl-card">
+            <h3>Pesquisa com dados oficiais do Google <span class="badge">IA</span></h3>
+            <p>Quanta gente procura o seu serviço na sua cidade, quanto custa cada clique e quem são os concorrentes. A IA analisa tudo e separa o que vale a pena.</p>
+          </div>
+        </li>
+        <li class="tl-item reveal">
+          <span class="tl-num">03</span>
+          <div class="tl-card">
+            <h3>Plano antes de gastar <span class="badge green">Você aprova</span></h3>
+            <p>Você vê a estimativa em faixa, os anúncios e a página antes de aprovar. Se a verba não chega na meta, a gente fala antes de começar.</p>
+          </div>
+        </li>
+        <li class="tl-item reveal">
+          <span class="tl-num">04</span>
+          <div class="tl-card">
+            <h3>Página feita para o anúncio</h3>
+            <p>A página fala exatamente o que o anúncio promete, com botão de WhatsApp.</p>
+          </div>
+        </li>
+        <li class="tl-item reveal">
+          <span class="tl-num">05</span>
+          <div class="tl-card">
+            <h3>Lançamento na rede de pesquisa</h3>
+            <p>Lançamento só na rede de pesquisa, com rastreamento de cada contato.</p>
+          </div>
+        </li>
+        <li class="tl-item reveal">
+          <span class="tl-num">06</span>
+          <div class="tl-card">
+            <h3>Toda semana</h3>
+            <p>Cortamos as buscas que não trazem cliente e ajustamos o que funciona. Você recebe um resumo curto no WhatsApp e um relatório completo no fim do mês.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- IA na prática -->
+  <section class="alt" id="ia">
+    <div class="wrap ai-grid">
+      <div class="reveal">
+        <div class="eyebrow">Estratégia com IA</div>
+        <h2 class="ai-h2">A verba vai pra quem quer contratar.</h2>
+        <p class="ai-lead">Nem toda busca vale o clique. A IA lê os dados do Google e as buscas reais da sua campanha e separa quem quer contratar de quem só está curioso.</p>
+        <ul class="ai-points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Antes de começar:</b> procura, custo do clique e concorrentes da sua região.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Toda semana:</b> corta as buscas que não trazem cliente e reforça as que trazem.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><b>Com gente olhando:</b> a IA aponta, a equipe decide e te explica no resumo.</span></li>
+        </ul>
+      </div>
+      <div class="ai-panel reveal" role="img" aria-label="Exemplo ilustrativo de análise semanal de buscas: buscas de quem quer contratar são mantidas, buscas de quem quer fazer sozinho são cortadas.">
+        <div class="ai-panel-head" aria-hidden="true"><b>Buscas da semana</b><span>Análise IA</span></div>
+        <div aria-hidden="true">
+          <div class="ai-row">
+            <span class="term">limpeza de sofá preço</span><span class="verdict v-keep">Manter</span>
+            <span class="why">Quer contratar e já está comparando orçamento.</span>
+          </div>
+          <div class="ai-row">
+            <span class="term">como limpar sofá sozinho</span><span class="verdict v-cut">Cortar</span>
+            <span class="why">Quer fazer sozinho. Clique que não vira cliente.</span>
+          </div>
+          <div class="ai-row">
+            <span class="term">limpeza de sofá perto de mim</span><span class="verdict v-keep">Manter</span>
+            <span class="why">Busca local com intenção clara de contratar.</span>
+          </div>
+          <div class="ai-row">
+            <span class="term">curso de limpeza de estofados</span><span class="verdict v-cut">Cortar</span>
+            <span class="why">Quer aprender o ofício, não contratar.</span>
+          </div>
+          <div class="ai-row">
+            <span class="term">higienização de colchão</span><span class="verdict v-adjust">Ajustar</span>
+            <span class="why">Serviço próximo: vale um anúncio próprio.</span>
+          </div>
+        </div>
+        <div class="ai-foot" aria-hidden="true">Exemplo ilustrativo. Os termos reais saem da pesquisa do seu negócio.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- d) POR QUE A LRK TECH -->
+  <section id="por-que">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Por que a LRK TECH</div>
+        <h2>Anúncio e site feitos juntos, com números na mesa.</h2>
+      </div>
+      <div class="bento">
+        <div class="why-card highlight reveal">
+          <span class="w-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h8"/></svg></span>
+          <h3>Site e anúncio feitos juntos</h3>
+          <p>A mesma equipe faz a página e a campanha.</p>
+        </div>
+        <div class="why-card reveal">
+          <span class="w-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z"/></svg></span>
+          <h3>Análise com IA e dados do Google</h3>
+          <p>Decisões com números, não com achismo.</p>
+        </div>
+        <div class="why-card reveal">
+          <span class="w-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M7 16v-4M12 16V8M17 16v-6"/></svg></span>
+          <h3>Estimativa honesta</h3>
+          <p>Mostramos uma faixa de resultado, nunca promessa.</p>
+        </div>
+        <div class="why-card wide reveal">
+          <span class="w-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></span>
+          <h3>A conta é sua</h3>
+          <p>A verba é paga direto ao Google, no seu cartão. A LRK TECH cobra só a gestão.</p>
+        </div>
+        <div class="why-card wide reveal">
+          <span class="w-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></span>
+          <h3>Painel ao vivo</h3>
+          <p>Você acompanha gasto e contatos quando quiser.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- e) PARA QUEM É -->
+  <section class="alt" id="para-quem">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Para quem é</div>
+        <h2>Negócios locais de serviço.</h2>
+        <p>Quem atende uma região e vive de pedido de orçamento.</p>
+      </div>
+      <div class="segment-grid reveal">
+        <div class="segment-chip">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 21h20M4 21V11l5-4v14M9 21v-4h4v4M13 21V7l7 4v10"/></svg></span>
+          <span>Obras e reformas</span>
+        </div>
+        <div class="segment-chip">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3zM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16z"/></svg></span>
+          <span>Limpeza</span>
+        </div>
+        <div class="segment-chip">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.35-9.5-8.5C.86 9.24 2.5 6 6 6c2 0 3.5 1.2 4 2.3C10.5 7.2 12 6 14 6c3.5 0 5.14 3.24 3.5 6.5C19 16.65 12 21 12 21z"/></svg></span>
+          <span>Saúde</span>
+        </div>
+        <div class="segment-chip">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg></span>
+          <span>Energia solar</span>
+        </div>
+        <div class="segment-chip">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4 2.5-2.5z"/></svg></span>
+          <span>Oficinas</span>
+        </div>
+        <div class="segment-chip">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <span>E negócios similares</span>
+        </div>
+      </div>
+      <div class="regions">
+        <div class="region reveal">
+          <span class="code">BR</span>
+          <div><h3>No Brasil</h3><p>Anúncios em português para a sua cidade e região.</p></div>
+        </div>
+        <div class="region reveal">
+          <span class="code">EUA</span>
+          <div><h3>Brasileiros com empresa nos EUA</h3><p>Anúncios em inglês para o público americano ou em português para a comunidade brasileira, conforme o público.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- f) O QUE VOCÊ RECEBE -->
+  <section id="o-que-recebe">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">O que você recebe</div>
+        <h2>Tudo que entra no serviço.</h2>
+      </div>
+      <div class="deliver reveal">
+        <ul class="deliver-list">
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Pesquisa de palavras-chave e concorrentes</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Plano com estimativa</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Anúncios</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Página de destino</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Rastreamento de conversão</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Otimização semanal</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Relatório mensal</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Painel ao vivo</li>
+        </ul>
+        <div class="deliver-cta">
+          <h3>Começa pelo diagnóstico grátis.</h3>
+          <p>A gente pesquisa o seu serviço na sua região e mostra o que faz sentido antes de você decidir qualquer coisa.</p>
+          <a class="btn btn-primary" data-wa href="https://wa.me/5547996125434" target="_blank" rel="noopener">Quero um diagnóstico grátis</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--
+  RESULTADOS (preencher depois, com autorização do cliente)
+
+  Não publicar nenhum cliente, número ou depoimento sem autorização por escrito.
+  Quando houver um caso real e autorizado, descomente e preencha o bloco abaixo.
+  Se quiser, adicione também um link "Resultados" no menu.
+
+  <section class="alt" id="resultados">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Resultados</div>
+        <h2>NOME DO CLIENTE (autorizado) · SERVIÇO · CIDADE</h2>
+        <p>PERÍODO · O QUE FOI FEITO (campanha, página, ajustes)</p>
+      </div>
+      <div class="bento">
+        <div class="why-card reveal">
+          <h3>NÚMERO REAL</h3>
+          <p>O QUE ESSE NÚMERO MEDE (ex.: contatos no WhatsApp no mês)</p>
+        </div>
+        <div class="why-card reveal">
+          <h3>NÚMERO REAL</h3>
+          <p>DESCRIÇÃO</p>
+        </div>
+        <div class="why-card reveal">
+          <h3>NÚMERO REAL</h3>
+          <p>DESCRIÇÃO</p>
+        </div>
+      </div>
+      <p style="margin-top:18px; font-size:0.8rem; color:var(--slate-400);">Dados reais da conta do cliente, publicados com autorização.</p>
+    </div>
+  </section>
+  -->
+
+  <!-- g) PERGUNTAS FREQUENTES -->
+  <section class="alt" id="perguntas">
+    <div class="wrap faq-grid">
+      <div class="section-head reveal">
+        <div class="eyebrow">Perguntas frequentes</div>
+        <h2>O que costumam perguntar.</h2>
+        <p>Ficou alguma dúvida? Chama no WhatsApp que a gente responde.</p>
+      </div>
+      <div class="faq reveal">
+        <details>
+          <summary>Quanto preciso investir?</summary>
+          <p>Depende da sua cidade e do seu serviço. A pesquisa mostra quanto custa o clique na sua região antes de você decidir.</p>
+        </details>
+        <details>
+          <summary>Em quanto tempo aparece resultado?</summary>
+          <p>Os anúncios aparecem logo depois de aprovados. O primeiro mês é de aprendizado; do segundo em diante a campanha fica mais afinada.</p>
+        </details>
+        <details>
+          <summary>Vocês garantem número de clientes?</summary>
+          <p>Não. Mostramos uma estimativa em faixa com base nos dados do Google e acompanhamos toda semana para chegar o mais perto possível.</p>
+        </details>
+        <details>
+          <summary>Preciso ter site?</summary>
+          <p>Não. Se não tiver, criamos a página do anúncio.</p>
+        </details>
+        <details>
+          <summary>Atendem empresas nos EUA?</summary>
+          <p>Sim, com anúncios em inglês para o público americano ou em português para a comunidade brasileira.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- h) CHAMADA FINAL -->
+  <section class="cta-final" id="diagnostico">
+    <div class="wrap">
+      <div class="cta-panel reveal">
+        <div class="eyebrow"><span class="dot"></span> Diagnóstico grátis</div>
+        <h2>Descubra quantas pessoas procuram o seu serviço na sua cidade.</h2>
+        <p>Conta sobre o seu negócio e a gente faz a pesquisa com os dados do Google.</p>
+        <a class="btn btn-primary btn-lg" data-wa href="https://wa.me/5547996125434" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2z"/></svg>
+          Quero meu diagnóstico grátis
+        </a>
+        <small>Sem compromisso. A conversa é pelo WhatsApp.</small>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <a class="footer-brand" href="/" aria-label="LRK.TECH — página inicial">
+      <img src="/logo.png" alt="LRK.TECH">
+    </a>
+    <div class="footer-links">
+      <a href="/#servicos">Serviços</a>
+      <a href="/google-ads">Google Ads</a>
+      <a href="/#projetos">Projetos</a>
+      <a href="https://instagram.com/lrktech" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <div class="copyright">© 2026 LRK.TECH — Sites, sistemas e Google Ads</div>
+  </div>
+</footer>
+
+<a class="wa-float" data-wa href="https://wa.me/5547996125434" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.84 14.03c-.25.7-1.23 1.28-2.02 1.45-.55.12-1.26.21-3.67-.79-2.98-1.23-4.9-4.24-5.05-4.44-.15-.2-1.21-1.61-1.21-3.07 0-1.46.76-2.17 1.03-2.47.27-.3.6-.37.8-.37.2 0 .4 0 .58.01.19.01.44-.07.68.53.25.6.86 2.06.93 2.21.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.48.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.68-.15.28.1 1.77.84 2.08.99.3.15.5.23.58.35.08.13.08.72-.17 1.42z"/></svg>
+</a>
+
+<script>
+  // WhatsApp — mesmo número e formato de link da home
+  const WHATSAPP_NUMBER = "5547996125434";
+  const MSG = encodeURIComponent("Olá! Vim pelo site e quero um diagnóstico grátis de Google Ads para o meu negócio.");
+  const link = `https://wa.me/${WHATSAPP_NUMBER}?text=${MSG}`;
+  document.querySelectorAll('[data-wa]').forEach(a => { a.href = link; });
+
+  // Reveal ao rolar
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+
+  // Ilustração do topo: busca -> anúncio -> clique -> WhatsApp
+  (function serpDemo(){
+    const q = document.getElementById('serp-q');
+    const title = document.getElementById('serp-title');
+    const results = document.getElementById('serp-results');
+    const ad = document.getElementById('serp-ad');
+    const cursor = document.getElementById('serp-cursor');
+    const toast = document.getElementById('wa-toast');
+    const stage = document.querySelector('.serp-stage');
+    if (!q || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const scenes = [
+      { q: 'limpeza de sofá perto de mim', t: 'Limpeza de Sofá e Estofados | Orçamento no WhatsApp' },
+      { q: 'reforma de banheiro orçamento', t: 'Reforma de Banheiro | Visita e Orçamento pelo WhatsApp' },
+      { q: 'energia solar para casa', t: 'Energia Solar Residencial | Simule pelo WhatsApp' },
+      { q: 'eletricista residencial', t: 'Eletricista Residencial | Atendimento na Sua Região' }
+    ];
+    const sleep = ms => new Promise(r => setTimeout(r, ms));
+    let visible = true;
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(([en]) => { visible = en.isIntersecting; }).observe(stage);
+    }
+
+    function placeCursorOnAd(){
+      const s = stage.getBoundingClientRect();
+      const a = title.getBoundingClientRect();
+      const x = a.left - s.left + Math.min(a.width * 0.55, 220);
+      const y = a.top - s.top + a.height * 0.4;
+      cursor.style.transform = `translate(${x}px, ${y}px)`;
+    }
+    function parkCursor(){
+      const s = stage.getBoundingClientRect();
+      cursor.style.transform = `translate(${s.width - 60}px, ${s.height - 70}px)`;
+    }
+
+    async function run(){
+      let i = 0;
+      parkCursor();
+      while (true) {
+        while (!visible) await sleep(400);
+        const sc = scenes[i % scenes.length];
+        results.classList.add('is-hidden');
+        toast.classList.add('is-hidden');
+        ad.classList.remove('clicked');
+        parkCursor();
+        await sleep(350);
+        q.textContent = '';
+        for (const ch of sc.q) { q.textContent += ch; await sleep(55); }
+        await sleep(350);
+        title.textContent = sc.t;
+        results.classList.remove('is-hidden');
+        await sleep(900);
+        placeCursorOnAd();
+        await sleep(1000);
+        cursor.classList.remove('press'); void cursor.getBoundingClientRect(); cursor.classList.add('press');
+        ad.classList.add('clicked');
+        await sleep(450);
+        toast.classList.remove('is-hidden');
+        await sleep(3200);
+        i++;
+      }
+    }
+    run();
+  })();
+</script>
+
+</body>
+</html>
